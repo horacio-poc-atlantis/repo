@@ -1,1 +1,1 @@
-retention_days=1
+retention_days = "1"
