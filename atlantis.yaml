@@ -1,0 +1,7 @@
+version: 3
+abort_on_execution_order_fail: true
+projects:
+- dir: some-application-test
+  execution_order_group: 1
+- dir: some-application-prod
+  execution_order_group: 2
