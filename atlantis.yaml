@@ -2,29 +2,6 @@ version: 3
 automerge: true
 abort_on_execution_order_fail: true
 
-workflows:
-  staging:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "staging.tfvars"]
-    apply:
-      steps:
-        - apply:
-            extra_args: ["-var-file", "staging.tfvars"]
-
-  production:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "production.tfvars"]
-    apply:
-      steps:
-        - apply:
-            extra_args: ["-var-file", "production.tfvars"]
-
 projects:
 - name: some-application-test
   dir: some-application-test
