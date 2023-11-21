@@ -1,7 +1,9 @@
 version: 3
+automerge: true
 abort_on_execution_order_fail: true
 projects:
-- dir: some-application-test
+- name: some-application-test
+  dir: some-application-test
   execution_order_group: 1
   autoplan:
     enabled: true
@@ -10,7 +12,8 @@ projects:
       - "./modules/**/*.tf"
       - "./common/*.tf"
 
-- dir: some-application-prod
+- name: some-application-prod
+  dir: some-application-prod
   execution_order_group: 2
   autoplan:
     enabled: true
