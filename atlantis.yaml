@@ -7,6 +7,7 @@ projects:
     enabled: true
     when_modified:
       - "./modules/**/*.tf"
+      - "./common/*.tf"
 
 - dir: some-application-prod
   execution_order_group: 2
@@ -14,3 +15,4 @@ projects:
     enabled: true
     when_modified:
       - "./modules/**/*.tf"
+      - "./common/*.tf"
