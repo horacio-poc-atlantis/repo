@@ -6,11 +6,15 @@ projects:
   autoplan:
     enabled: true
     when_modified:
+      - "./some-application-test/*.tf"
       - "./modules/**/*.tf"
+      - "./common/*.tf"
 
 - dir: some-application-prod
   execution_order_group: 2
   autoplan:
     enabled: true
     when_modified:
+      - "./some-application-prod/*.tf"
       - "./modules/**/*.tf"
+      - "./common/*.tf"
