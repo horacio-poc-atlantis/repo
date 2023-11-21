@@ -14,13 +14,13 @@ projects:
       - "../common/*.tf"
       - "*.tf"
 
-#- name: some-application-prod
-#  dir: some-application
-#  workflow: production
-#  execution_order_group: 2
-#  autoplan:
-#    enabled: true
-#    when_modified:
-#      - "../modules/**/*.tf"
-#      - "../common/*.tf"
-#      - "*.tf"
+- name: some-application-prod
+  dir: some-application
+  workflow: production
+  execution_order_group: 2
+  autoplan:
+    enabled: true
+    when_modified:
+      - "../modules/**/*.tf"
+      - "../common/*.tf"
+      - "*.tf"
