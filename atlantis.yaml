@@ -3,5 +3,14 @@ abort_on_execution_order_fail: true
 projects:
 - dir: some-application-test
   execution_order_group: 1
+  autoplan:
+    enabled: true
+    when_modified:
+      - "./modules/**/*.tf"
+
 - dir: some-application-prod
   execution_order_group: 2
+  autoplan:
+    enabled: true
+    when_modified:
+      - "./modules/**/*.tf"
