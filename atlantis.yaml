@@ -3,24 +3,34 @@ automerge: true
 abort_on_execution_order_fail: true
 
 projects:
-- name: some-application-test
-  dir: some-application
-  workflow: staging
-  execution_order_group: 1
-  autoplan:
-    enabled: true
-    when_modified:
-      - "../modules/**/*.tf"
-      - "../common/*.tf"
-      - "*.tf"
+  - &staging
+    name: template-test
+    dir: some-application
+    workflow: staging
+    execution_order_group: 1
+    autoplan:
+      enabled: true
+      when_modified:
+        - "../modules/**/*.tf"
+        - "../common/*.tf"
+        - "*.tf"
 
-- name: some-application-prod
-  dir: some-application
-  workflow: production
-  execution_order_group: 2
-  autoplan:
-    enabled: true
-    when_modified:
-      - "../modules/**/*.tf"
-      - "../common/*.tf"
-      - "*.tf"
+  - &production
+    name: template-prod
+    dir: some-application
+    workflow: production
+    execution_order_group: 2
+    autoplan:
+      enabled: true
+      when_modified:
+        - "../modules/**/*.tf"
+        - "../common/*.tf"
+        - "*.tf"
+
+  - <<: *staging
+    name: some-application-test
+    dir: ./some-application
+
+  - <<: *production
+    name: some-application-prod
+    dir: ./some-application
