@@ -3,32 +3,6 @@ automerge: true
 abort_on_execution_order_fail: true
 
 projects:
-  #- &template
-  #  name: template
-  #  dir: template
-  #  workflow: custom
-  #  autoplan:
-  #    enabled: true
-  #    when_modified:
-  #      - "./terraform/modules/**/*.tf"
-  #      - "**/*.tf"
-  #      - ".terraform.lock.hcl"
-  #
-  #- <<: *template
-  #  name: ue1-prod-titan
-  #  dir: ./terraform/titan
-  #  workspace: ue1-prod
-  #
-  #- <<: *template
-  #  name: ue1-stage-titan
-  #  dir: ./terraform/titan
-  #  workspace: ue1-stage
-  #
-  #- <<: *template
-  #  name: ue1-dev-titan
-  #  dir: ./terraform/titan
-  #  workspace: ue1-dev
-
   - &staging
     name: template-test
     dir: some-application
@@ -53,17 +27,6 @@ projects:
         - "../common/*.tf"
         - "*.tf"
 
-  #- name: some-application-test
-  #  dir: some-application
-  #  workflow: staging
-  #  execution_order_group: 1
-  #  autoplan:
-  #    enabled: true
-  #    when_modified:
-  #      - "../modules/**/*.tf"
-  #      - "../common/*.tf"
-  #      - "*.tf"
-
   - <<: *staging
     name: some-application-test
     dir: ./some-application
@@ -71,14 +34,3 @@ projects:
   - <<: *production
     name: some-application-prod
     dir: ./some-application
-
-  #- name: some-application-prod
-  #  dir: some-application
-  #  workflow: production
-  #  execution_order_group: 2
-  #  autoplan:
-  #    enabled: true
-  #    when_modified:
-  #      - "../modules/**/*.tf"
-  #      - "../common/*.tf"
-  #      - "*.tf"
