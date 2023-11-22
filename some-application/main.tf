@@ -1,3 +1,7 @@
+terraform {
+  required_version = ">= 1.0"
+}
+
 module "app-buckets" {
   source = "../modules/buckets"
   environment = var.environment
@@ -10,4 +14,4 @@ module "app-buckets" {
 #  environment = var.environment
 #}
 
-# touch 2
+# touch 3
