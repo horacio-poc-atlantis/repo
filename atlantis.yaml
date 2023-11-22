@@ -13,6 +13,7 @@ projects:
       when_modified:
         - "../modules/**/*.tf"
         - "../common/*.tf"
+        - "../common/envs/common-staging.tfvars"
         - "*.tf"
         - "envs/staging.tfvars"
 
@@ -26,6 +27,7 @@ projects:
       when_modified:
         - "../modules/**/*.tf"
         - "../common/*.tf"
+        - "../common/envs/common-production.tfvars"
         - "*.tf"
         - "envs/production.tfvars"
 
