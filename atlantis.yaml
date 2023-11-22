@@ -30,8 +30,6 @@ projects:
 #  workspace: ue1-dev
 
 - &staging
-  name: template
-  dir: template
   workflow: staging
   execution_order_group: 1
   autoplan:
@@ -42,8 +40,6 @@ projects:
       - "*.tf"
 
 - &production
-  name: template
-  dir: template
   workflow: production
   execution_order_group: 2
   autoplan:
