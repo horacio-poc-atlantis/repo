@@ -2,23 +2,6 @@ version: 3
 automerge: true
 abort_on_execution_order_fail: true
 
-#.job_template: &job_configuration  # Hidden yaml configuration that defines an anchor named 'job_configuration'
-#  image: ruby:2.6
-#  services:
-#    - postgres
-#    - redis
-
-.staging_template: &staging
-  workflow: staging
-  execution_order_group: 1
-  autoplan:
-    enabled: true
-    when_modified:
-      - "../modules/**/*.tf"
-      - "../common/*.tf"
-      - "*.tf"
-
-
 projects:
   #- &template
   #  name: template
@@ -46,25 +29,29 @@ projects:
   #  dir: ./terraform/titan
   #  workspace: ue1-dev
 
-#  - &staging
-#    workflow: staging
-#    execution_order_group: 1
-#    autoplan:
-#      enabled: true
-#      when_modified:
-#        - "../modules/**/*.tf"
-#        - "../common/*.tf"
-#        - "*.tf"
+  - &staging
+    name: template-test
+    dir: some-application
+    workflow: staging
+    execution_order_group: 1
+    autoplan:
+      enabled: true
+      when_modified:
+        - "../modules/**/*.tf"
+        - "../common/*.tf"
+        - "*.tf"
 
-#  - &production
-#    workflow: production
-#    execution_order_group: 2
-#    autoplan:
-#      enabled: true
-#      when_modified:
-#        - "../modules/**/*.tf"
-#        - "../common/*.tf"
-#        - "*.tf"
+  - &production
+    name: template-prod
+    dir: some-application
+    workflow: production
+    execution_order_group: 2
+    autoplan:
+      enabled: true
+      when_modified:
+        - "../modules/**/*.tf"
+        - "../common/*.tf"
+        - "*.tf"
 
   #- name: some-application-test
   #  dir: some-application
@@ -77,13 +64,13 @@ projects:
   #      - "../common/*.tf"
   #      - "*.tf"
 
-- name: some-application-test
-  dir: some-application
-  <<: *staging
+  - <<: *staging
+    name: some-application-test
+    dir: ./some-application
 
-#  - <<: *production
-#    name: some-application-prod
-#    dir: ./some-application
+  - <<: *production
+    name: some-application-prod
+    dir: ./some-application
 
   #- name: some-application-prod
   #  dir: some-application
