@@ -14,7 +14,7 @@ projects:
         - "../modules/**/*.tf"
         - "../common/*.tf"
         - "*.tf"
-        - "vars/staging.tfvars"
+        - "envs/staging.tfvars"
 
   - &production
     name: template-prod
@@ -27,7 +27,7 @@ projects:
         - "../modules/**/*.tf"
         - "../common/*.tf"
         - "*.tf"
-        - "vars/production.tfvars"
+        - "envs/production.tfvars"
 
   - <<: *staging
     name: some-application-test
